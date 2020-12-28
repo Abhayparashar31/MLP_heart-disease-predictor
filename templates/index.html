@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+</head>
+
+<body>
+
+    <div id="main" style="color:chartreuse">
+        <form action="{{ url_for('predict')}}" method="post">
+            <h2>Heart Disease Prediction</h2>
+            <br>
+            <!---Age-->
+            <h3>Age</h3>
+            <input id="age" name="0" type="number ">
+        <div class="dropdown">   
+                <!---Sex-->   
+                <div>
+                    <h3>Sex</h3>
+                        <select name="1" class='first' id="drop" required="required">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                </div>
+                <!---Chest Pain Type-->
+                <div>
+                    <h3>Chest Pain Type</h3>
+                        <select name="2"  class='first' id="drop2" required="required">
+                            <option value="Typical angina">Typical angina</option>
+                            <option value="Atypical angina">Atypical angina</option>
+                            <option value="Non-anginal pain">Non-anginal pain</option>
+                            <option value="Asymptomatic">Asymptomatic</option>
+                        </select>
+                </div>
+                
+                <!---resting electrocardiongraphic results-->
+                <div>
+                    <h3>resting electrocardiographic results</h3>
+                        <select name="3"  class='first' id="drop3" required="required">
+                            <option value="Nothing to note">Nothing to note</option>
+                            <option value="ST-T Wave abnormality">ST-T Wave abnormality</option>
+                            <option value="definite left ventricular">definite left ventricular</option>
+                        </select>
+                </div>
+        </div>
+
+        <div class="dropdown">   
+  <!--thalium stress result-->
+  <div>
+    <h3>thalium stress result</h3>
+    <select name="12" id="drop3" class='second' required="required">
+        <option value="Normal">Normal</option>
+        <option value="Fixed Defect">Fixed Defect</option>
+        <option value="Reversable Defect">Reversable Defect</option>
+    </select>
+</div>
+
+                        <!---Slope-->   
+                        <div>
+                            <h3>Slope</h3>
+                                <select name="4" class='slope' id="drop2" required="required">
+                                    <option value="Upslopping">Upslopping</option>
+                                    <option value="Flatslopping">Flatslopping</option>
+                                    <option value="Downsloping">Downsloping</option>
+                                </select>
+                        </div>
+            
+            <!--exercise induced angina-->
+            <div>
+                <h3>Exercise induced angina</h3>
+                <select name="9" class='eia' id="drop" required="required">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+    </div>
+
+    <div class="dropdown">   
+        <!---oldpeak-->   
+        <div>
+            <h3>Oldpeak</h3>
+            <input id="oldpeak" name="10" type="number ">
+        </div>
+        <!---number of major vessels (0-3)-->
+        <div>
+            <h3>number of major vessels (0-3)</h3>
+            <input id="mv" name="11" type="number ">
+        </div>
+                    <!---Blood Sugar-->   
+                    <div>
+                        <h3>Blood Sugar Level</h3>
+                        <input id="bsl" name="7" type="number ">
+                    </div>
+        
+      
+
+</div>
+<div class="dropdown">   
+    <!---Max heart Rate-->
+    <div>
+        <h3>Max heart Rate</h3>
+        <input id="mhr" name="8" type="number ">
+    </div>
+    <!---Blood Pressure-->
+    <div>
+        <h3>Blood Pressure</h3>
+        <input id="bp" name="5" type="number ">
+    </div>
+    
+    <!--Cholestrol Level-->
+    <div>
+        <h3>Cholestro Level</h3>
+        <input id="cl" name="6" type="number ">
+    </div>
+</div>
+
+
+
+
+
+
+
+            
+            <br><br>
+
+
+
+            <br><center><button id="sub" type="submit ">Predict</button></center>
+            <br>
+
+        </form>
+    </div>
+    <p class="info">Made with ❤️ by Abhayparashar31👋</p>
+
+
+
+
+    <style>
+        body {
+            background-color:rgba(32, 33, 36, 1);
+            background-image: url('/static/heart.jpg');
+            background-position: center;
+            background-size: cover;
+            text-align: center;
+        }
+        #main{
+            margin: 2% 0% 0px 0%;
+            
+        }
+        .eia{
+            margin-right: 30px;
+        }
+        .slope{
+            margin-right:10px;
+        }
+
+        h2{
+            font-family: Arial;
+            font-size: 30px;
+            color:lightblue;
+            text-decoration: underline;
+            font-family: 'Trebuchet MS';
+        }
+        h3{
+          color: whitesmoke;
+          font-family: 'Trebuchet MS';
+        }
+        form {
+            background-color:rgba(32, 33, 36, 1);
+            opacity:98%;
+            width: 60%;
+            height: 90vh;    ;
+            margin: 0px 30% 0px 20%;
+            border: 2px solid blue;
+            box-shadow: 5px 10px 20px 15px whitesmoke;
+        }
+        input {
+            margin: 0px 0px 0px 0px;
+            padding: 0px 0px 0px 0px;
+            width: auto;
+            background-color:rgba(32, 33, 36, 5) ;
+            font-size: 20px;
+            text-align: center;
+            color: chartreuse;
+            border:none;
+            border-bottom: 2px solid white;
+        }
+        input:focus{
+            outline: none;
+            border-bottom: 3px solid white;
+            color: chartreuse;
+        }
+        .dropdown{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        .dropdown h3{
+            font-size: 15px;
+            margin-top: 30px;
+        }
+        
+        #drop {
+            width: 150px;
+            height: 43px;
+            text-align: center;
+            border-radius: 0px;
+            font-size: 18px;
+            margin-left:20px;
+        }
+        
+        #drop:hover {
+            background-color: rgb(25, 114, 155);
+            color:white;
+        }
+        
+        #drop2 {
+            width: 150px;
+            height: 43px;
+            text-align: center;
+            border-radius: 0px;
+            font-size: 18px;
+        }
+        
+        #drop2:hover {
+            background-color: rgba(145, 148, 3, 0.863);
+        }
+        #drop3 {
+            width: 150px;
+            height: 43px;
+            text-align: center;
+            border-radius: 0px;
+            font-size: 18px;
+        }
+        
+        #drop3:hover {
+            background-color: rgb(6, 150, 150);
+        }
+        
+        /*Button*/
+        #sub {
+            margin-top: 25px;
+            width: 250px;
+            height: 50px;
+            color:rgba(32, 33, 36, 1);
+            text-align: center;
+            border-radius: 14px;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: verdana;
+        }
+        
+        #sub:hover {
+            background-color: chartreuse;
+            box-shadow: 2px 2px 8px 2px rgb(238, 239, 241);
+            color: white;
+            border: 2px solid white;
+        }
+        .info{
+            color:yellow;
+            font-family: monospace;
+            font-size: 18px;
+            font-weight: 700;
+    
+           }
+    </style>
+</body>
+
+</html>
